@@ -29,10 +29,29 @@ def Count_and_insert_correct_letters(letter):
     return cnt
 
 count_correct_letters = 0
-while(count_correct_letters<len(word)):
+chances_count = 9
+input_letters_list = []
+while True:
+    if(count_correct_letters == len(word)):
+        print("Congratulations, you may just will have been winning!")
+        break
+    if(chances_count == 0):
+        print("LOL, nice try bro, maybe next time you'll get there")
+        break
+    print("THE WORD TO GUESS")
     print(*dummy_word)
+    print("You have " + str(chances_count) + " more chances")
     print("Enter a letter:")
     input_letter = input()
-    if input_letter in word: count_correct_letters += Count_and_insert_correct_letters(input_letter)
+    if(input_letter in input_letters_list):
+        print("Please do not write the same letter again")
+        break
+    input_letters_list.append(input_letter)
+    if input_letter in word:
+        print("Good one")
+        count_correct_letters += Count_and_insert_correct_letters(input_letter)
+    else:
+        print("Not this time")
+        chances_count -= 1
 
 
