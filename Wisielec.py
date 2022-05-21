@@ -33,9 +33,11 @@ chances_count = 9
 input_letters_list = []
 while True:
     if(count_correct_letters == len(word)):
+        print(*dummy_word)
         print("Congratulations, you may just will have been winning!")
         break
     if(chances_count == 0):
+        print(*dummy_word)
         print("LOL, nice try bro, maybe next time you'll get there")
         break
     print("THE WORD TO GUESS")
@@ -45,7 +47,7 @@ while True:
     input_letter = input()
     if(input_letter in input_letters_list):
         print("Please do not write the same letter again")
-        break
+        continue
     input_letters_list.append(input_letter)
     if input_letter in word:
         print("Good one")
