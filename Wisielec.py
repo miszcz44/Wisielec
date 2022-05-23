@@ -26,12 +26,18 @@ def Ask_for_another_game():
     print("Wanna play again?(y/n)")
     return input()
 
-
+def declare_chances_count(diff_choice):
+    if diff_choice == 1: return 8
+    elif diff_choice == 2: return 6
+    elif diff_choice == 3: return 4
+    elif diff_choice == 4: return 1
 
 flag = True
 while flag:
+    print("Choose difficulty:\n1.Easy\n2.Medium\n3.Hard\n4.Hardcore")
+    difficulty_choice = int(input())
     count_correct_letters = 0
-    chances_count = 9
+    chances_count = declare_chances_count(difficulty_choice)
     input_letters_list = []
     word = Choose_random_word()
     dummy_word = []
@@ -55,6 +61,8 @@ while flag:
         print("THE WORD TO GUESS")
         print(*dummy_word)
         print("You have " + str(chances_count) + " more chances")
+        if(len(input_letters_list) > 0):
+            print("Used letters: " + str(input_letters_list))
         print("Enter a letter:")
         input_letter = input()
         input_letter = input_letter.lower()
